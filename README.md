@@ -29,19 +29,8 @@ pip install onnx rich
 ```
 
 **输出示例：**
-```
-╭─ 1. 元信息 ──────────────────────────────
-│ 模型名称: torch-jit-export
-│ IR版本: 7
-│ Opset版本: ai.onnx: v13
-│ 自定义元数据 (2 项):
-│     • cache_dim: 128
-│     • cache_len: 11
-│ 统计摘要:
-│     • 输入: 2 | 输出: 2 | 节点: 233
-│     • 算子种类: 18 | 权重: 38 | 参数量: 756.94K
-╰──────────────────────────────────────────
-```
+
+![onnx_dump.py 截图](onnx_dump.png)
 
 ---
 
@@ -84,11 +73,15 @@ python onnx_viewer_gui.py
   - 节点详情：点击节点查看属性
   - 图属性：完整计算图信息
 
+**界面截图：**
+
+![onnx_viewer_gui.py 截图](onnx_viewer.png)
+
 ## 安装
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/onnxdump.git
+git clone https://github.com/jimax2000/onnxdump.git
 cd onnxdump
 
 # 安装依赖

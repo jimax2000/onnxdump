@@ -209,8 +209,8 @@ def show_initializers(graph):
 def show_model_info(model_path, show_operators=True, show_weights=False):
     """显示模型信息"""
     try:
+        onnx.checker.check_model(model_path)
         model = onnx.load(model_path)
-        onnx.checker.check_model(model)
         graph = model.graph
 
         console.print()

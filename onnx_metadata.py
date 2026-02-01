@@ -21,8 +21,8 @@ def export_metadata(model_path, output_file):
         0成功, 1失败
     """
     try:
+        onnx.checker.check_model(model_path)
         model = onnx.load(model_path)
-        onnx.checker.check_model(model)
 
         if not model.metadata_props:
             print(f"警告: 模型中没有custom metadata", file=sys.stderr)
@@ -81,8 +81,8 @@ def import_metadata(model_path, metadata_file, output_path, mode="merge"):
             print(f"警告: metadata文件为空", file=sys.stderr)
 
         # 加载模型
+        onnx.checker.check_model(model_path)
         model = onnx.load(model_path)
-        onnx.checker.check_model(model)
 
         original_count = len(model.metadata_props)
 
@@ -136,8 +136,8 @@ def list_metadata(model_path):
         0成功, 1失败
     """
     try:
+        onnx.checker.check_model(model_path)
         model = onnx.load(model_path)
-        onnx.checker.check_model(model)
 
         if not model.metadata_props:
             print("模型中没有custom metadata")

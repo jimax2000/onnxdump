@@ -188,11 +188,9 @@ class ONNXModelExplorer(QMainWindow):
 
         try:
             self.statusBar().showMessage("[*] 正在加载模型...")
+            onnx.checker.check_model(file_path)
             self.model = onnx.load(file_path)
             self.model_path = file_path
-
-            # 检查模型
-            onnx.checker.check_model(self.model)
 
             # 更新UI
             self.update_overview()

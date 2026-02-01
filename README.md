@@ -24,8 +24,9 @@ pip install onnx rich
 **使用：**
 ```bash
 ./onnx_dump.py model.onnx              # 查看基本信息
+./onnx_dump.py model.onnx -o            # 显示算子信息
 ./onnx_dump.py model.onnx -w            # 显示权重信息
-./onnx_dump.py model.onnx --no-ops      # 不显示算子信息
+./onnx_dump.py model.onnx -o -w         # 显示算子 + 权重信息
 ```
 
 **输出示例：**
@@ -45,8 +46,8 @@ pip install onnx
 
 **使用：**
 ```bash
-./onnx_dump_simple.py model.onnx          # 查看所有信息
-./onnx_dump_simple.py model.onnx --no-ops # 不显示算子信息
+./onnx_dump_simple.py model.onnx          # 查看基本信息
+./onnx_dump_simple.py model.onnx -o       # 显示算子信息
 ```
 
 ---

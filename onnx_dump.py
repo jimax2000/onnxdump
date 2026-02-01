@@ -206,7 +206,7 @@ def show_initializers(graph):
     console.print(table)
 
 
-def show_model_info(model_path, show_operators=True, show_weights=False):
+def show_model_info(model_path, show_operators=False, show_weights=False):
     """显示模型信息"""
     try:
         onnx.checker.check_model(model_path)
@@ -247,8 +247,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  %(prog)s model.onnx              # 查看所有信息
-  %(prog)s model.onnx --no-ops     # 不显示算子信息
+  %(prog)s model.onnx              # 查看基本信息
+  %(prog)s model.onnx --ops        # 显示算子信息
   %(prog)s model.onnx -w           # 显示权重信息
         """
     )
@@ -259,9 +259,9 @@ def main():
     )
 
     parser.add_argument(
-        "--no-ops",
+        "-o", "--ops",
         action="store_true",
-        help="不显示算子信息"
+        help="显示算子信息"
     )
 
     parser.add_argument(
@@ -278,7 +278,7 @@ def main():
 
     args = parser.parse_args()
 
-    return show_model_info(args.model, show_operators=not args.no_ops, show_weights=args.weights)
+    return show_model_info(args.model, show_operators=args.ops, show_weights=args.weights)
 
 
 if __name__ == "__main__":

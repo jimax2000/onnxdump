@@ -5,7 +5,7 @@
 ## 功能特性
 
 - **元信息查看**：模型名称、IR版本、Opset版本、生产者信息
-- **自定义元数据**：显示模型中存储的 custom metadata
+- **自定义元数据**：显示、导出、导入模型中存储的 custom metadata
 - **输入输出信息**：表格形式展示模型的所有输入和输出
 - **算子统计**：统计模型中使用的所有算子类型及数量
 - **参数量统计**：自动计算模型的参数总量
@@ -76,6 +76,40 @@ python onnx_viewer_gui.py
 **界面截图：**
 
 ![onnx_viewer_gui.py 截图](onnx_viewer.png)
+
+---
+
+### 4. onnx_metadata.py
+
+Custom Metadata 导出/导入工具。
+
+**依赖：**
+```bash
+pip install onnx
+```
+
+**使用：**
+```bash
+# 导出 metadata 到文本文件
+./onnx_metadata.py export model.onnx metadata.txt
+
+# 导入 metadata（合并模式，保留原有但文件中没有的key）
+./onnx_metadata.py import model.onnx metadata.txt new_model.onnx
+
+# 导入 metadata（完全替换模式，删除所有原有metadata）
+./onnx_metadata.py import model.onnx metadata.txt new_model.onnx --mode replace
+
+# 列出模型的 metadata
+./onnx_metadata.py list model.onnx
+```
+
+**metadata 文件格式：**
+```
+key1<TAB>value1
+key2<TAB>value2
+author	myname
+version	1.0
+```
 
 ## 安装
 
